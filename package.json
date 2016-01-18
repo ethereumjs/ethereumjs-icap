@@ -24,13 +24,9 @@
   "homepage": "https://github.com/ethereumjs/ethereumjs-icap",
   "dependencies": {
     "base-x": "^1.0.1",
-    "convert-hex": "^0.1.0",
-    "iban": "^0.0.6"
+    "convert-hex": "^0.1.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.4",
-    "documentation": "^3.0.4",
-    "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "standard": "^5.4.1"
   },
