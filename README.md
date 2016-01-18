@@ -2,6 +2,8 @@
 
 Utilities for handling [ICAP](https://github.com/ethereum/wiki/wiki/ICAP:-Inter-exchange-Client-Address-Protocol) addresses.
 
+It works in Node.js as well as in the browser via `browserify`. When minified for a browser, it should be less than 4K in size.
+
 ## API
 
 * `fromAddress(address, print, nonstd)` - try encoding an address into an IBAN
