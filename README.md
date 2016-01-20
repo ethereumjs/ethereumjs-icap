@@ -19,7 +19,9 @@ All of the above methods will throw exceptions on invalid inputs. The `to*` and 
 
 The `print` parameter above, when set to true, will create an IBAN in the *print format*, which is space delimited groups of four characters: `XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS`
 
-The `nonstd` parameter of `fromAddress`, when set to true, will turn on support for the *basic ICAP format* generating an invalid IBAN, but encoding the entire 160 bits of an Ethereum address
+The `address` parameter doesn't support `0x` prefixed input and will not include that in the output.
+
+The `nonstd` parameter of `fromAddress`, when set to true, will turn on support for the *basic ICAP format* generating an invalid IBAN, but encoding the entire 160 bits of an Ethereum address.
 
 ## Examples
 
