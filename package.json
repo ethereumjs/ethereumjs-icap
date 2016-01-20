@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ethereumjs/ethereumjs-icap",
   "dependencies": {
-    "base-x": "^1.0.1",
+    "base-x": "^1.0.2",
     "convert-hex": "^0.1.0"
   },
   "devDependencies": {
