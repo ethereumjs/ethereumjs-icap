@@ -46,3 +46,19 @@ ICAP.toAsset('XE81ETHXREGGAVOFYORK')
 ICAP.toAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
 // returns 'c5496aee77c1ba1f0854206a26dda82a81d6d8'
 ```
+
+## *Direct* address generation
+
+A *direct address ICAP* is an address with a leading zero and therefore it fits into the length restrictions of IBAN. The following simple bruteforce code can be used to generate such addresses:
+
+```js
+const ethUtil = require('ethereumjs-util')
+function generateDirectAddress () {
+  while(true) {
+    var privateKey = crypto.randomBytes(32) // or your favourite other random method
+    if (ethUtil.privateToAddress(privateKey)[0] === 0) {
+      return privateKey
+    }
+  }
+}
+```
