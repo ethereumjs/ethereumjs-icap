@@ -8,11 +8,11 @@ It works in Node.js as well as in the browser via `browserify`. When minified fo
 
 * `fromAddress(address, print, nonstd)` - try encoding an address into an IBAN
 * `fromAsset(asset, print)` - try encoding an asset description into an IBAN
-* `toAddress(iban)` - try decoding an IBAN into an address description
+* `toAddress(iban)` - try decoding an IBAN into an address
 * `toAsset(iban)` - try decoding an IBAN into an asset description
-* `encode(address/asset)` - encode an address or an asset description into an IBAN
+* `encode(address/asset)` - encode an address or asset description into an IBAN
 * `decode(iban)` - decode an IBAN into an address or asset description
-* `encodeBBAN(address/asset)` - encode an address or an asset description into a BBAN
+* `encodeBBAN(address/asset)` - encode an address or asset description into a BBAN
 * `decodeBBAN(bban)` - decode a BBAN into an address or asset description
 
 All of the above methods will throw exceptions on invalid inputs. The `to*` and `from*` method will also check for the expected inputs and outputs.
