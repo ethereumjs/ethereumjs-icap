@@ -65,3 +65,5 @@ function generateDirectAddress () {
   }
 }
 ```
+
+Alternatively [`ethereumjs-wallet`](http://npmjs.com/packages/ethereumjs-wallet) can be used to generate compatible addresses.
