@@ -27,9 +27,12 @@ describe('.encodeBBAN()', function () {
   it('should work for \'direct\'', function () {
     assert.equal(ICAP.encodeBBAN('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encodeBBAN('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
+    assert.equal(ICAP.encodeBBAN('0x03c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'FUTTUNPK7WZJSGGCWVEBARQWQ8YML4')
+    assert.equal(ICAP.encodeBBAN('0x03ffffffffffffffffffffffffffffffffffffff'), 'GTJRJEU5043IEF993XWE21DBF0BVGF')
   })
   it('should work for \'basic\'', function () {
     assert.equal(ICAP.encodeBBAN('0x42c5496aee77c1ba1f0854206a26dda82a81d6d8'), '7SS84LEE90PIULMR3DYBGOVBNJN5N14')
+    assert.equal(ICAP.encodeBBAN('0x088f924eeceeda7fe92e1f5b0fffffffffffffff'), 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ')
   })
   it('should work for \'indirect\'', function () {
     assert.deepEqual(ICAP.encodeBBAN({
@@ -44,6 +47,7 @@ describe('.encodeBBAN()', function () {
 describe('.decode()', function () {
   it('should work for \'direct\'', function () {
     assert.equal(ICAP.decode('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.decode('XE43ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'), '0x088f924eeceeda7fe92e1f5b0fffffffffffffff')
   })
   it('should work \'basic\'', function () {
     assert.equal(ICAP.decode('XE73038O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
@@ -65,6 +69,7 @@ describe('.encode()', function () {
   it('should work for \'direct\'', function () {
     assert.equal(ICAP.encode('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encode('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
+    assert.equal(ICAP.encode('0x088f924eeceeda7fe92e1f5b0fffffffffffffff'), 'XE43ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ')
   })
   it('should work for \'basic\'', function () {
     assert.equal(ICAP.encode('0x42c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE657SS84LEE90PIULMR3DYBGOVBNJN5N14')

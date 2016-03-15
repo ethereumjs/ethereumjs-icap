@@ -124,14 +124,13 @@ ICAP.decode = function (iban, novalidity) {
  * @returns {String}
  */
 ICAP.fromAddress = function (address, print, nonstd) {
-  if ((address.length === 42) && (address[0] === '0') && (address[1] === 'x') &&
-      (address[2] === '0') && (address[3] === '0')) {
-    address = '0x' + address.slice(4)
+  var ret = ICAP.encode(address, print)
+
+  if ((ret.replace(' ', '').length !== 34) && (nonstd !== true)) {
+    throw new Error('Supplied address will result in invalid an IBAN')
   }
-  if ((address.length !== 40) && (nonstd !== true)) {
-    throw new Error('Supplied address will result in invalid IBAN')
-  }
-  return ICAP.encode(address, print)
+
+  return ret
 }
 
 /*
