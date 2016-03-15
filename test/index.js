@@ -3,7 +3,7 @@ var ICAP = require('../')
 
 describe('.decodeBBAN()', function () {
   it('should work for \'direct\'', function () {
-    assert.equal(ICAP.decodeBBAN('38O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.decodeBBAN('38O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
   })
   it('should work for \'basic\'', function () {
     assert.equal(ICAP.decodeBBAN('038O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
@@ -43,7 +43,7 @@ describe('.encodeBBAN()', function () {
 
 describe('.decode()', function () {
   it('should work for \'direct\'', function () {
-    assert.equal(ICAP.decode('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.decode('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
   })
   it('should work \'basic\'', function () {
     assert.equal(ICAP.decode('XE73038O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
@@ -57,7 +57,7 @@ describe('.decode()', function () {
     })
   })
   it('should work for \'direct\' in print format', function () {
-    assert.equal(ICAP.decode('XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS'), '0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.decode('XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
   })
 })
 
@@ -112,7 +112,7 @@ describe('.fromAsset()', function () {
 
 describe('.toAddress()', function () {
   it('should work with \'direct\'', function () {
-    assert.equal(ICAP.toAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.toAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
   })
   it('should work with \'basic\'', function () {
     assert.equal(ICAP.toAddress('XE657SS84LEE90PIULMR3DYBGOVBNJN5N14'), '0x42c5496aee77c1ba1f0854206a26dda82a81d6d8')

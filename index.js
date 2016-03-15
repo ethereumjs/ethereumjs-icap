@@ -9,7 +9,14 @@ var ICAP = {}
 ICAP.decodeBBAN = function (bban) {
   var length = bban.length
   if (length === 30 || length === 31) {
-    return '0x' + hex.bytesToHex(bs36.decode(bban))
+    var tmp = hex.bytesToHex(bs36.decode(bban))
+
+    // FIXME: horrible padding code
+    while (tmp.length !== 40) {
+      tmp = '0' + tmp
+    }
+
+    return '0x' + tmp
   } else if (length === 16) {
     return {
       asset: bban.slice(0, 3),
