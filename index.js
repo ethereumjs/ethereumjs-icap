@@ -9,7 +9,7 @@ var ICAP = {}
 ICAP.decodeBBAN = function (bban) {
   var length = bban.length
   if (length === 30 || length === 31) {
-    return hex.bytesToHex(bs36.decode(bban))
+    return '0x' + hex.bytesToHex(bs36.decode(bban))
   } else if (length === 16) {
     return {
       asset: bban.slice(0, 3),
@@ -29,7 +29,7 @@ ICAP.encodeBBAN = function (bban) {
       throw new Error('Invalid \'indirect\' Ethereum BBAN')
     }
     return [ bban.asset, bban.institution, bban.client ].join('').toUpperCase()
-  } else if (bban.length === 38 || bban.length === 40) {
+  } else if (bban.length === 40 || bban.length === 42) {
     // NOTE: if the BBAN stars with a leading zero, we'll encode a 'direct' type, otherwise the 'basic type'
     return bs36.encode(hex.hexToBytes(bban))
   } else {
@@ -112,10 +112,11 @@ ICAP.decode = function (iban, novalidity) {
  * @returns {String}
  */
 ICAP.fromAddress = function (address, print, nonstd) {
-  if ((address.length === 40) && (address[0] === '0') && (address[1] === '0')) {
-    address = address.slice(2)
+  if ((address.length === 42) && (address[0] === '0') && (address[1] === 'x') &&
+      (address[2] === '0') && (address[3] === '0')) {
+    address = '0x' + address.slice(4)
   }
-  if ((address.length !== 38) && (nonstd !== true)) {
+  if ((address.length !== 40) && (nonstd !== true)) {
     throw new Error('Supplied address will result in invalid IBAN')
   }
   return ICAP.encode(address, print)

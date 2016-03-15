@@ -19,7 +19,7 @@ All of the above methods will throw exceptions on invalid inputs. The `to*` and 
 
 The `print` parameter above, when set to true, will create an IBAN in the *print format*, which is space delimited groups of four characters: `XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS`
 
-The `address` parameter doesn't support `0x` prefixed input and will not include that in the output.
+The `address` parameter only supports `0x` prefixed input and will include that in the output.
 
 The `nonstd` parameter of `fromAddress`, when set to true, will turn on support for the *basic ICAP format* generating an invalid IBAN, but encoding the entire 160 bits of an Ethereum address.
 
@@ -33,7 +33,7 @@ ICAP.fromAsset({
 })
 // returns 'XE81ETHXREGGAVOFYORK'
 
-ICAP.fromAddress('c5496aee77c1ba1f0854206a26dda82a81d6d8')
+ICAP.fromAddress('0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
 // returns 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'
 
 ICAP.toAsset('XE81ETHXREGGAVOFYORK')
@@ -44,13 +44,13 @@ ICAP.toAsset('XE81ETHXREGGAVOFYORK')
 // }
 
 ICAP.toAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
-// returns 'c5496aee77c1ba1f0854206a26dda82a81d6d8'
+// returns '0xc5496aee77c1ba1f0854206a26dda82a81d6d8'
 ```
 
 ## *Direct* address generation
 
 A *direct address ICAP* is an address less than 155 bits of length and therefore it safely fits into the length restrictions of IBAN (and the checksum method used).
-That upper limit is `03ffffffffffffffffffffffffffffffffffffff` or `XE91GTJRJEU5043IEF993XWE21DBF0BVGF`.
+That upper limit is `0x03ffffffffffffffffffffffffffffffffffffff` or `XE91GTJRJEU5043IEF993XWE21DBF0BVGF`.
 
 The following simple bruteforce code can be used to generate such addresses:
 
