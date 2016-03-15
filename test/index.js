@@ -25,7 +25,6 @@ describe('.decodeBBAN()', function () {
 
 describe('.encodeBBAN()', function () {
   it('should work for \'direct\'', function () {
-    assert.equal(ICAP.encodeBBAN('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encodeBBAN('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encodeBBAN('0x03c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'FUTTUNPK7WZJSGGCWVEBARQWQ8YML4')
     assert.equal(ICAP.encodeBBAN('0x03ffffffffffffffffffffffffffffffffffffff'), 'GTJRJEU5043IEF993XWE21DBF0BVGF')
@@ -41,6 +40,20 @@ describe('.encodeBBAN()', function () {
       client: 'GAVOFYORK'
     }),
     'ETHXREGGAVOFYORK')
+  })
+  it('shouldn\'t allow non-standard hex input', function () {
+    assert.throws(function () {
+      ICAP.encodeBBAN('0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    })
+    assert.throws(function () {
+      ICAP.encodeBBAN('0xc5496aee77c1ba1f085420')
+    })
+    assert.throws(function () {
+      ICAP.encodeBBAN('0xc5496aee77c1ba1f08542')
+    })
+    assert.throws(function () {
+      ICAP.encodeBBAN('c5496aee77c1ba1f08542')
+    })
   })
 })
 
@@ -67,7 +80,6 @@ describe('.decode()', function () {
 
 describe('.encode()', function () {
   it('should work for \'direct\'', function () {
-    assert.equal(ICAP.encode('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encode('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encode('0x088f924eeceeda7fe92e1f5b0fffffffffffffff'), 'XE43ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ')
   })
@@ -82,14 +94,28 @@ describe('.encode()', function () {
     }),
     'XE81ETHXREGGAVOFYORK')
   })
+  it('shouldn\'t allow non-standard hex input', function () {
+    assert.throws(function () {
+      ICAP.encode('0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+    })
+    assert.throws(function () {
+      ICAP.encode('0xc5496aee77c1ba1f085420')
+    })
+    assert.throws(function () {
+      ICAP.encode('0xc5496aee77c1ba1f08542')
+    })
+    assert.throws(function () {
+      ICAP.encode('c5496aee77c1ba1f08542')
+    })
+  })
   it('should work for \'direct\' for print format', function () {
-    assert.equal(ICAP.encode('0xc5496aee77c1ba1f0854206a26dda82a81d6d8', true), 'XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS')
+    assert.equal(ICAP.encode('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8', true), 'XE73 38O0 73KY GTWW ZN0F 2WZ0 R8PX 5ZPP ZS')
   })
 })
 
 describe('.fromAddress()', function () {
   it('should work for short address', function () {
-    assert.equal(ICAP.fromAddress('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
+    assert.equal(ICAP.fromAddress('0x03c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE83FUTTUNPK7WZJSGGCWVEBARQWQ8YML4')
   })
   it('should work for zero prefixed address', function () {
     assert.equal(ICAP.fromAddress('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')

@@ -36,10 +36,9 @@ ICAP.encodeBBAN = function (bban) {
       throw new Error('Invalid \'indirect\' Ethereum BBAN')
     }
     return [ bban.asset, bban.institution, bban.client ].join('').toUpperCase()
-  } else if (bban.length === 40 || bban.length === 42) {
+  } else if ((bban.length === 42) && (bban[0] === '0') && (bban[1] === 'x')) {
     // Workaround for base-x, see https://github.com/cryptocoinjs/base-x/issues/18
-    if ((bban.length === 42) && (bban[0] === '0') && (bban[1] === 'x') &&
-        (bban[2] === '0') && (bban[3] === '0')) {
+    if ((bban[2] === '0') && (bban[3] === '0')) {
       bban = '0x' + bban.slice(4)
     }
 
