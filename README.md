@@ -33,7 +33,7 @@ ICAP.fromAsset({
 })
 // returns 'XE81ETHXREGGAVOFYORK'
 
-ICAP.fromAddress('0xc5496aee77c1ba1f0854206a26dda82a81d6d8')
+ICAP.fromAddress('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
 // returns 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'
 
 ICAP.toAsset('XE81ETHXREGGAVOFYORK')
@@ -44,7 +44,7 @@ ICAP.toAsset('XE81ETHXREGGAVOFYORK')
 // }
 
 ICAP.toAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
-// returns '0xc5496aee77c1ba1f0854206a26dda82a81d6d8'
+// returns '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'
 ```
 
 ## *Direct* address generation
