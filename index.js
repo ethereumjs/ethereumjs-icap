@@ -37,7 +37,12 @@ ICAP.encodeBBAN = function (bban) {
     }
     return [ bban.asset, bban.institution, bban.client ].join('').toUpperCase()
   } else if (bban.length === 40 || bban.length === 42) {
-    // NOTE: if the BBAN stars with a leading zero, we'll encode a 'direct' type, otherwise the 'basic type'
+    // Workaround for base-x, see https://github.com/cryptocoinjs/base-x/issues/18
+    if ((bban.length === 42) && (bban[0] === '0') && (bban[1] === 'x') &&
+        (bban[2] === '0') && (bban[3] === '0')) {
+      bban = '0x' + bban.slice(4)
+    }
+
     return bs36.encode(hex.hexToBytes(bban))
   } else {
     throw new Error('Not a valid input for Ethereum BBAN')

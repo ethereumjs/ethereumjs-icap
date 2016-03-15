@@ -26,9 +26,9 @@ describe('.decodeBBAN()', function () {
 describe('.encodeBBAN()', function () {
   it('should work for \'direct\'', function () {
     assert.equal(ICAP.encodeBBAN('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
+    assert.equal(ICAP.encodeBBAN('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), '38O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
   })
   it('should work for \'basic\'', function () {
-    assert.equal(ICAP.encodeBBAN('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), '038O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encodeBBAN('0x42c5496aee77c1ba1f0854206a26dda82a81d6d8'), '7SS84LEE90PIULMR3DYBGOVBNJN5N14')
   })
   it('should work for \'indirect\'', function () {
@@ -64,9 +64,9 @@ describe('.decode()', function () {
 describe('.encode()', function () {
   it('should work for \'direct\'', function () {
     assert.equal(ICAP.encode('0xc5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
+    assert.equal(ICAP.encode('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
   })
   it('should work for \'basic\'', function () {
-    assert.equal(ICAP.encode('0x00c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE73038O073KYGTWWZN0F2WZ0R8PX5ZPPZS')
     assert.equal(ICAP.encode('0x42c5496aee77c1ba1f0854206a26dda82a81d6d8'), 'XE657SS84LEE90PIULMR3DYBGOVBNJN5N14')
   })
   it('should work for \'indirect\'', function () {
