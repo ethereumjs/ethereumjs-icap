@@ -170,4 +170,31 @@ ICAP.toAsset = function (iban) {
   return asset
 }
 
+ICAP.isICAP = function (iban) {
+  try {
+    ICAP.decode(iban)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
+ICAP.isAddress = function (iban) {
+  try {
+    ICAP.toAddress(iban)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
+ICAP.isAsset = function (iban) {
+  try {
+    ICAP.toAsset(iban)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 module.exports = ICAP

@@ -169,3 +169,30 @@ describe('.toAsset()', function () {
     })
   })
 })
+
+describe('.isICAP()', function () {
+  it('should return true on proper input', function () {
+    assert.equal(ICAP.isICAP('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), true)
+  })
+  it('should return false on invalid input', function () {
+    assert.equal(ICAP.isICAP('XE73 Invalid'), false)
+  })
+})
+
+describe('.isAddress()', function () {
+  it('should return true on proper input', function () {
+    assert.equal(ICAP.isAddress('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), true)
+  })
+  it('should return false on invalid input', function () {
+    assert.equal(ICAP.isAddress('XE81ETHXREGGAVOFYORK'), false)
+  })
+})
+
+describe('.isAsset()', function () {
+  it('should return true on proper input', function () {
+    assert.equal(ICAP.isAsset('XE81ETHXREGGAVOFYORK'), true)
+  })
+  it('should return false on invalid input', function () {
+    assert.equal(ICAP.isAsset('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), false)
+  })
+})

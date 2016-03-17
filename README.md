@@ -14,6 +14,9 @@ It works in Node.js as well as in the browser via `browserify`. When minified fo
 * `decode(iban)` - decode an IBAN into an address or asset description
 * `encodeBBAN(address/asset)` - encode an address or asset description into a BBAN
 * `decodeBBAN(bban)` - decode a BBAN into an address or asset description
+* `isICAP(iban)` - return true if input is a valid ICAP, otherwise false
+* `isAddress(iban)` - return true if the input is a valid ICAP with an address, otherwise false
+* `isAsset(iban)` - return true if the input is a valid ICAP with an asset description, otherwise false
 
 All of the above methods will throw exceptions on invalid inputs. The `to*` and `from*` method will also check for the expected inputs and outputs.
 
