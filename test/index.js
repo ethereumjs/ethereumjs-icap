@@ -148,6 +148,9 @@ describe('.toAddress()', function () {
   it('should work with \'basic\'', function () {
     assert.equal(ICAP.toAddress('XE657SS84LEE90PIULMR3DYBGOVBNJN5N14'), '0x42c5496aee77c1ba1f0854206a26dda82a81d6d8')
   })
+  it('should work for \'long\'', function () {
+    assert.equal(ICAP.toAddress('XE870Z0SGY63X3UEPSSD6U9B3U9VIUOM1XP'), '0x08540829e2918aeb912b233b1e96366f075fe34d')
+  })
   it('shouldn\'t work with an asset', function () {
     assert.throws(function () {
       ICAP.toAddress('XE81ETHXREGGAVOFYORK')
