@@ -12,7 +12,7 @@ ICAP.decodeBBAN = function (bban) {
     var tmp = hex.bytesToHex(bs36.decode(bban))
 
     // FIXME: horrible padding code
-    while (tmp.length !== 40) {
+    while (tmp.length < 40) {
       tmp = '0' + tmp
     }
 
