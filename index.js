@@ -12,8 +12,17 @@ ICAP.decodeBBAN = function (bban) {
     var tmp = hex.bytesToHex(bs36.decode(bban))
 
     // FIXME: horrible padding code
-    while (tmp.length !== 40) {
+    while (tmp.length < 40) {
       tmp = '0' + tmp
+    }
+
+    var extraZeroes = tmp.length - 40
+    if (extraZeroes > 0) {
+      var zeroes = tmp.slice(0, extraZeroes)
+      for (var i = 0; i < extraZeroes; i++) {
+        if (zeroes[i] !== '0') throw new Error('Not a valid Ethereum BBAN')
+      }
+      tmp = tmp.slice(extraZeroes)
     }
 
     return '0x' + tmp
