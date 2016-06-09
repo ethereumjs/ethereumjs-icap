@@ -16,6 +16,11 @@ ICAP.decodeBBAN = function (bban) {
       tmp = '0' + tmp
     }
 
+    // NOTE: certain tools include an extra leading 0, drop that
+    if (tmp.length == 42 && tmp[0] == 0) {
+      tmp = tmp.slice(2)
+    }
+
     return '0x' + tmp
   } else if (length === 16) {
     return {

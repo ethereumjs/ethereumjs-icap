@@ -62,9 +62,10 @@ describe('.decode()', function () {
     assert.equal(ICAP.decode('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
     assert.equal(ICAP.decode('XE43ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'), '0x088f924eeceeda7fe92e1f5b0fffffffffffffff')
   })
-  it('should work \'basic\'', function () {
+  it('should work for \'basic\'', function () {
     assert.equal(ICAP.decode('XE73038O073KYGTWWZN0F2WZ0R8PX5ZPPZS'), '0x00c5496aee77c1ba1f0854206a26dda82a81d6d8')
     assert.equal(ICAP.decode('XE657SS84LEE90PIULMR3DYBGOVBNJN5N14'), '0x42c5496aee77c1ba1f0854206a26dda82a81d6d8')
+    assert.equal(ICAP.decode('XE870Z0SGY63X3UEPSSD6U9B3U9VIUOM1XP'), '0x08540829e2918aeb912b233b1e96366f075fe34d')
   })
   it('should work for \'indirect\'', function () {
     assert.deepEqual(ICAP.decode('XE81ETHXREGGAVOFYORK'), {
