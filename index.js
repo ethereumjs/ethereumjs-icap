@@ -104,7 +104,7 @@ ICAP.encode = function (bban, print) {
 
 ICAP.decode = function (iban, novalidity) {
   // change from 'print format' to 'electronic format', e.g. remove spaces
-  iban = iban.replace(/\ /g, '')
+  iban = iban.replace(/ /g, '')
 
   // check for validity
   if (!novalidity) {
