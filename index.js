@@ -1,5 +1,3 @@
-var hex = require('convert-hex')
-
 // For simplicity we redefine it, as the default uses lowercase
 var BASE36_ALPHABET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 var bs36 = require('base-x')(BASE36_ALPHABET)
@@ -9,7 +7,7 @@ var ICAP = {}
 ICAP.decodeBBAN = function (bban) {
   var length = bban.length
   if (length === 30 || length === 31) {
-    var tmp = hex.bytesToHex(bs36.decode(bban))
+    var tmp = bs36.decode(bban).toString('hex')
 
     // FIXME: horrible padding code
     while (tmp.length < 40) {
@@ -44,10 +42,12 @@ ICAP.encodeBBAN = function (bban) {
   } else if ((bban.length === 42) && (bban[0] === '0') && (bban[1] === 'x')) {
     // Workaround for base-x, see https://github.com/cryptocoinjs/base-x/issues/18
     if ((bban[2] === '0') && (bban[3] === '0')) {
-      bban = '0x' + bban.slice(4)
+      bban = bban.slice(4)
+    } else {
+      bban = bban.slice(2)
     }
 
-    return bs36.encode(hex.hexToBytes(bban))
+    return bs36.encode(Buffer.from(bban, 'hex'))
   } else {
     throw new Error('Not a valid input for Ethereum BBAN')
   }
@@ -104,7 +104,7 @@ ICAP.encode = function (bban, print) {
 
 ICAP.decode = function (iban, novalidity) {
   // change from 'print format' to 'electronic format', e.g. remove spaces
-  iban = iban.replace(/\ /g, '')
+  iban = iban.replace(/ /g, '')
 
   // check for validity
   if (!novalidity) {
