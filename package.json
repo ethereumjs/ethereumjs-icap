@@ -29,9 +29,9 @@
     "convert-hex": "^0.1.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.4",
-    "istanbul": "^0.4.1",
-    "mocha": "^2.3.4",
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
     "standard": "^5.4.1"
   },
   "standard": {
