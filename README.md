@@ -1,5 +1,9 @@
 # ethereumjs-icap
 
+> [!WARNING]  
+> This package has been deprecated and is not maintained.
+---
+
 [![NPM Package](https://img.shields.io/npm/v/ethereumjs-icap.svg?style=flat-square)](https://www.npmjs.org/package/ethereumjs-icap)
 [![Build Status](https://img.shields.io/travis/ethereumjs/ethereumjs-icap.svg?branch=master&style=flat-square)](https://travis-ci.org/ethereumjs/ethereumjs-icap)
 [![Coverage Status](https://img.shields.io/coveralls/ethereumjs/ethereumjs-icap.svg?style=flat-square)](https://coveralls.io/r/ethereumjs/ethereumjs-icap)
